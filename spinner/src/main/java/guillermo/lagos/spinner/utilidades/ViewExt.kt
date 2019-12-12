@@ -1,4 +1,4 @@
-package guillermo.lagos.spinner.extension
+package guillermo.lagos.spinner.utilidades
 
 import android.view.LayoutInflater
 import android.view.View
@@ -16,7 +16,7 @@ fun ViewGroup.inflate(@LayoutRes resId: Int, attachToRoot: Boolean = false): Vie
 fun ViewGroup.attachLayout(@LayoutRes resId: Int) =
     inflate(resId, true)
 
-fun View.expand(
+fun View.abrir(
     maxExpandedHeight: Int,
     animationDuration: Long,
     completionListener: (() -> Unit)? = null
@@ -45,7 +45,7 @@ fun View.expand(
     startAnimation(a)
 }
 
-fun View.collapse(
+fun View.cerrar(
     animationDuration: Long,
     completionListener: (() -> Unit)? = null
 ) {

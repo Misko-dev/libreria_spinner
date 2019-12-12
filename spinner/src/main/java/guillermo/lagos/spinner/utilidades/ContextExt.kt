@@ -1,4 +1,4 @@
-package guillermo.lagos.spinner.extension
+package guillermo.lagos.spinner.utilidades
 
 import android.content.Context
 import androidx.annotation.ColorRes

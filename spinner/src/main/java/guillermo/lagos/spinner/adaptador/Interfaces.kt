@@ -1,10 +1,10 @@
-package guillermo.lagos.spinner.adapter
+package guillermo.lagos.spinner.adaptador
 
 import android.view.View
 import android.view.ViewGroup
-import guillermo.lagos.spinner.view.ExpandableSelectionView
+import guillermo.lagos.spinner.vista.VistaItemSpinner
 
-interface ExpandableItemAdapter {
+interface Interfaces {
     fun inflateHeaderView(parent: ViewGroup): View
 
     fun inflateItemView(parent: ViewGroup): View
@@ -13,7 +13,7 @@ interface ExpandableItemAdapter {
 
     fun bindHeaderView(headerView: View, selectedIndices: List<Int>)
 
-    fun onViewStateChanged(headerView: View, state: ExpandableSelectionView.State)
+    fun onViewStateChanged(headerView: View, state: VistaItemSpinner.Estado)
 
     fun getItemsCount(): Int
 

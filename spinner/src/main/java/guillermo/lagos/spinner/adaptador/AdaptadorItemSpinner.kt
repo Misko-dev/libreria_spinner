@@ -1,4 +1,4 @@
-package guillermo.lagos.spinner.adapter
+package guillermo.lagos.spinner.adaptador
 
 import android.view.View
 import android.view.ViewGroup
@@ -9,10 +9,10 @@ import androidx.annotation.ColorInt
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import guillermo.lagos.spinner.R
-import guillermo.lagos.spinner.extension.inflate
+import guillermo.lagos.spinner.utilidades.inflate
 
-class ExpandableItemRecyclerAdapter(
-    private var adapter: ExpandableItemAdapter,
+class AdaptadorItemSpinner(
+    private var adapter: Interfaces,
     private val itemClickCallback: (Int) -> Unit,
     private val selectedIndexPredicate: (Int) -> Boolean
 ) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
@@ -24,7 +24,7 @@ class ExpandableItemRecyclerAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         val linearLayout = LinearLayout(parent.context)
         val contentView = adapter.inflateItemView(parent)
-        val dividerView = parent.inflate(R.layout.spinner_divider)
+        val dividerView = parent.inflate(R.layout.spinner_barra_divisora)
         showDividers?.let { dividerView.isVisible = it }
         dividerColor?.let { dividerView.setBackgroundColor(it) }
 
