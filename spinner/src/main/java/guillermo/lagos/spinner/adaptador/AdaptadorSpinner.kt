@@ -6,7 +6,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
 import com.mikepenz.iconics.IconicsDrawable
-import com.mikepenz.iconics.view.IconicsButton
 import guillermo.lagos.spinner.R
 import guillermo.lagos.spinner.utilidades.inflate
 import guillermo.lagos.spinner.vista.VistaItemSpinner
@@ -30,6 +29,10 @@ open class AdaptadorSpinner(
         val view = parent.inflate(R.layout.spinner_default)
         val txt_titulo_default = view.findViewById<TextView>(R.id.headerTV)
         txt_titulo_default.hint = hint
+
+        val icon_default = view.findViewById<ImageView>(R.id.listIndicatorIV)
+        icon_default.setImageDrawable(icon_row_right)
+
         return view
 
     }
