@@ -28,7 +28,6 @@ abstract class VistaItemSpinner @JvmOverloads constructor(
 
     private val contenedor: LinearLayout
     private val cuerpoSpinner: VistaCuerpoSpinner
-    private val txt_error: TextView
     private var defaultSpinner: View
 
     private var estadoSpinner: Estado = Estado.Cerrado
@@ -60,11 +59,10 @@ abstract class VistaItemSpinner @JvmOverloads constructor(
             VistaCuerpoSpinner(ContextThemeWrapper(context, recyclerStyle))
         cuerpoSpinner.alturaMaxima = maximaAltura
 
-        txt_error = inflate(R.layout.spinner_error) as TextView
+
         defaultSpinner = View(context)
 
         this.addView(contenedor)
-        this.addView(txt_error)
     }
 
     fun setAdaptador(interfaces: Interfaces) {
@@ -82,10 +80,6 @@ abstract class VistaItemSpinner @JvmOverloads constructor(
         inicializarEstado()
     }
 
-    fun setError(errorStr: String?) {
-        txt_error.isGone = (errorStr == null)
-        txt_error.text = errorStr
-    }
 
     fun listenerEstado(state: Estado) {
         if (estadoSpinner == state)
