@@ -2,8 +2,10 @@ package guillermo.lagos.spinner.adaptador
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.view.isVisible
+import com.mikepenz.iconics.IconicsDrawable
 import com.mikepenz.iconics.view.IconicsButton
 import guillermo.lagos.spinner.R
 import guillermo.lagos.spinner.utilidades.inflate
@@ -11,15 +13,18 @@ import guillermo.lagos.spinner.vista.VistaItemSpinner
 
 open class AdaptadorSpinner(
     private val items: List<String>,
-    var hint: String? = null
+    var hint: String? = null,
+    internal var icon_tick: IconicsDrawable,
+    internal var icon_row_right: IconicsDrawable,
+    internal var icon_row_down: IconicsDrawable
 ) : Interfaces {
 
 
-    var estadoSeleccionResID: String? = null
+    var estadoSeleccionResID: IconicsDrawable? = null
 
-    var estadoCerradoResID: String? = null
+    var estadoCerradoResID: IconicsDrawable? = null
 
-    var estadoAbiertoResID: String? = null
+    var estadoAbiertoResID: IconicsDrawable? = null
 
     override fun inflateHeaderView(parent: ViewGroup): View {
         val view = parent.inflate(R.layout.spinner_default)
@@ -35,8 +40,8 @@ open class AdaptadorSpinner(
     override fun bindItemView(itemView: View, position: Int, selected: Boolean) {
         val txt_titulo_item = itemView.findViewById<TextView>(R.id.itemNameTV)
         txt_titulo_item.text = items[position]
-        itemView.findViewById<IconicsButton>(R.id.selectionIV)
-            .text = (estadoSeleccionResID ?: "{faw-check}")
+        itemView.findViewById<ImageView>(R.id.selectionIV)
+            .setImageDrawable(estadoSeleccionResID ?: icon_tick)
         itemView.findViewById<View>(R.id.selectionIV).isVisible = selected
     }
 
@@ -54,12 +59,13 @@ open class AdaptadorSpinner(
 
 
     override fun onViewStateChanged(headerView: View, state: VistaItemSpinner.Estado) {
-        val ic_default = headerView.findViewById<IconicsButton>(R.id.listIndicatorIV)
-        ic_default.text = when (state) {
+        val ic_default = headerView.findViewById<ImageView>(R.id.listIndicatorIV)
+        ic_default.setImageDrawable( when (state) {
             VistaItemSpinner.Estado.Abierto ->
-                estadoAbiertoResID ?: "{angle-right}"
+                estadoAbiertoResID ?: icon_row_down
             VistaItemSpinner.Estado.Cerrado ->
-                estadoCerradoResID ?: "{angle-down}"
+                estadoCerradoResID ?: icon_row_right
         }
+        )
     }
 }
